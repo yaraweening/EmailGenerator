@@ -1,0 +1,7 @@
+# requirements.txt
+Flask
+flasgger
+pymongo
+mongoengine
+python-dotenv
+jwt

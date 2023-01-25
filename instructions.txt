@@ -1,0 +1,15 @@
+docker kill #name#
+docker build --tag python-docker .
+docker run --publish 5000:5000 python-docker
+
+# Run docker hosted
+http://127.0.0.1:5000
+
+# Setup environment
+python3 -m venv venv
+pip install -r requirements.txt
+
+# Run local
+venv\Scripts\activate.bat
+set FLASK_APP=main.py
+flask run
