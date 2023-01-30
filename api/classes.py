@@ -83,11 +83,11 @@ class ClassesItemAPI(MethodView):
           - classes
         responses:
           200:
-            description: Returns a list of students
+            description: Returns a list of classes
             schema:
                 type: array
                 items:
-                    $ref: '#/definitions/Student'
+                    $ref: '#/definitions/Classes'
         """
         return get_classes_service()
 
