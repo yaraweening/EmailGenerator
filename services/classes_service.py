@@ -35,19 +35,34 @@ def add_classesstudent_service(class_id, student_id):
     except Exception as e:
         return make_response({'message' : str(e)}, 404)  
 
+def get_classes_service():
+    classes = []
+    try:
+        classes_data = Classes.objects()
+        for classesEntry in classes_data:
+            classes_item = {}
+            classes_item['class_id'] = str(classesEntry.class_id)
+            classes_item['name'] = classesEntry.name
+            classes_item['nrOfStudents'] = classesEntry.nrOfStudents
+            classes.append(classes_item)
+
+        return {"classes": classes}
+    except Exception as e:
+        return make_response({'message' : str(e)}, 404)  
+
 def get_classesstudentsbyid_service(class_id):
     students = []
     try:
         student_data = Student.objects(class_id=class_id)
         for student in student_data:
-            student_data = {}
-            student_data['_id'] = str(student.id)
-            student_data['firstname'] = student.firstname
-            student_data['lastname'] = student.lastname
-            student_data['phone'] = student.phone
-            student_data['email'] = student.email
-            student_data['class_id'] = student.class_id
-            students.append(student_data)
+            student_item = {}
+            student_item['_id'] = str(student.id)
+            student_item['firstname'] = student.firstname
+            student_item['lastname'] = student.lastname
+            student_item['phone'] = student.phone
+            student_item['email'] = student.email
+            student_item['class_id'] = student.class_id
+            students.append(student_item)
 
         return {"student": students}
     except Exception as e:

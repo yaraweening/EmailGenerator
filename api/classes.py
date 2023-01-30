@@ -1,6 +1,6 @@
 from flask.views import MethodView
 from flask import jsonify, request
-from services.classes_service import add_classes_service, add_classesstudent_service, get_classesstudentsbyid_service, delete_classesstudentbyid_service
+from services.classes_service import add_classes_service, add_classesstudent_service, get_classes_service, get_classesstudentsbyid_service, delete_classesstudentbyid_service
 
 class ClassesAPI(MethodView):
 
@@ -74,6 +74,22 @@ class ClassesAPI(MethodView):
         return add_classesstudent_service(class_id, student_id)
 
 class ClassesItemAPI(MethodView):
+
+    def get(self):
+        """
+        Get classes
+        ---
+        tags:
+          - classes
+        responses:
+          200:
+            description: Returns a list of students
+            schema:
+                type: array
+                items:
+                    $ref: '#/definitions/Student'
+        """
+        return get_classes_service()
 
     def post(self):
         """

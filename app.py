@@ -105,6 +105,12 @@ app.add_url_rule(
 app.add_url_rule(
     '/v1/classes',
     view_func=classesViewItem,
+    methods=['GET'],
+    endpoint='should_be_v1_only_classes_get'
+)
+app.add_url_rule(
+    '/v1/classes',
+    view_func=classesViewItem,
     methods=['POST'],
     endpoint='should_be_v1_only_classes_post'
 )

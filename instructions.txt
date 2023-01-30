@@ -1,3 +1,4 @@
+docker ps
 docker kill #name#
 docker build --tag python-docker .
 docker run --publish 5000:5000 python-docker
@@ -11,5 +12,4 @@ pip install -r requirements.txt
 
 # Run local
 venv\Scripts\activate.bat
-set FLASK_APP=main.py
 flask run
